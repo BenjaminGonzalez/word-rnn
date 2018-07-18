@@ -12,12 +12,12 @@ from model import Model
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_dir', type=str, default='data/tinyshakespeare',
+    parser.add_argument('--data_dir', type=str, default='data/',
                        help='data directory containing input.txt')
     parser.add_argument('--input_encoding', type=str, default=None,
                        help='character encoding of input.txt, from https://docs.python.org/3/library/codecs.html#standard-encodings')
-    parser.add_argument('--log_dir', type=str, default='logs',
-                       help='directory containing tensorboard logs')
+    parser.add_argument('--log_dir', type=str, default='log',
+                       help='directory containing tensorboard log')
     parser.add_argument('--save_dir', type=str, default='save',
                        help='directory to store checkpointed models')
     parser.add_argument('--rnn_size', type=int, default=256,
@@ -88,7 +88,8 @@ def train(args):
     model = Model(args)
 
     merged = tf.summary.merge_all()
-    train_writer = tf.summary.FileWriter(args.log_dir)
+    train_writer = tf.summary.FileWriter(args.
+                                         _dir)
     gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=args.gpu_mem)
 
     with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as sess:
